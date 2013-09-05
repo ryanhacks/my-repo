@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mytld.mycompany</groupId>
 	<artifactId>myapp</artifactId>
-	<name>projectName</name>
+	<name>myapp</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -98,6 +98,12 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+           <groupId>org.twitter4j</groupId>
+           <artifactId>twitter4j-core</artifactId>
+           <version>[3.0,)</version>
+       </dependency>
         
 	</dependencies>
 	<repositories>
@@ -116,6 +122,17 @@
 			<url>http://maven.springframework.org/milestone</url>
 			<snapshots><enabled>false</enabled></snapshots>
 		</repository>
+		<repository>
+			<id>twitter4j.org</id>
+			<name>twitter4j.org Repository</name>
+			<url>http://twitter4j.org/maven2</url>
+			<releases>
+			   <enabled>true</enabled>
+			</releases>
+			<snapshots>
+			   <enabled>true</enabled>
+			</snapshots>
+      </repository>
 	</repositories>
 	<build>
 		<plugins>
@@ -127,13 +144,13 @@
 					<target>${java-version}</target>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<warName>projectName</warName>
+					<warName>myapp</warName>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -183,7 +200,12 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.0-beta-1</version>
-			</plugin>						
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcatServer</server>
+					<path>/myapp</path>
+				</configuration>
+			</plugin>		
 		</plugins>
 	</build>
 </project>
