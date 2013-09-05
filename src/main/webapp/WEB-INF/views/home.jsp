@@ -5,8 +5,13 @@
 	<title>Home</title>
 </head>
 <body>
+<center>
 <h1>
-	Hello world!
+	Search
 </h1>
+
+<input type="text" name="query" />
+
+</center>
 </body>
 </html>
